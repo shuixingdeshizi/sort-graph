@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>bubble-sort graph</title>
+  <style>
+    .container {
+      display: flex;
+      align-items: flex-end;
+    }
+    .box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 40px;
+      height: 40px;
+      margin: 0 10px;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <h1>冒泡排序算法演示</h1>
+  <div class="container">
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+  </div>
+  <script>
+    let arr = []
+    let i = 9
+    while (i>0) {
+      arr.push(i)
+      i--
+    }
+    console.log(arr)
+    let colors = ['green', 'blue', 'blueviolet', 'red', 'orangered', 'orchid', 'greenyellow', 'gold', 'orange']
+
+    let $container = document.querySelector('.container')
+    let $children = $container.querySelectorAll('.box')
+    Array.prototype.forEach.call($children, (item, index) => {
+      item.innerHTML = arr[index]
+      item.style.background = colors[index]
+      item.style.height = 20 + arr[index] * 10 + 'px'
+    })
+
+    bubbleSort(arr)
+    console.log(arr)
+
+    function bubbleSort (array) {
+      function swap (array, index1, index2) {
+        var aux = array[index1]
+        array[index1] = array[index2]
+        array[index2] = aux
+      }
+      let length = array.length
+      for (var i = 0; i < length; i++) {
+        for (var j = 0; j < length -1; j++) {
+          if (arr[j] > arr[j+1]) {
+            swap(array, j, j+1)
+          }
+        }
+      }
+    }
+    
+  </script>
+</body>
+</html>
