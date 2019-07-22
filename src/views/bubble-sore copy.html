@@ -65,51 +65,33 @@
     })
 
     bubbleSort(arr)
+    console.log(arr)
 
-    function swap (arr, index1, index2) {
-      var diff = index2 - index1
-      var aux = arr[index1]
-      arr[index1] = arr[index2]
-      arr[index2] = aux
-      var moved1 = obj[arr[index1]].moved -= 1
-      var moved2 = obj[arr[index2]].moved += 1
-
-      $children[obj[arr[index1]].index].style.transform = `translateX(${60 * moved1}px)`
-      $children[obj[arr[index2]].index].style.transform = `translateX(${60 * moved2}px)`
-    }
-
-    function bubbleSort (arr) {
-      var l = arr.length
-
-      var i = 0
-      var j = 0
-      function step () {
-
-        function step2 () {
+    function bubbleSort (array) {
+      function swap (array, index1, index2) {
+        debugger
+        var diff = index2 - index1
+        var aux = array[index1]
+        array[index1] = array[index2]
+        array[index2] = aux
+        var moved1 = obj[array[index1]].moved -= 1
+        var moved2 = obj[array[index2]].moved += 1
+        console.log(moved1, moved2)
+        console.log(obj[array[index1]].value, obj[array[index2]].value)
+        $children[obj[array[index1]].index].style.transform = `translateX(${60 * moved1}px)`
+        $children[obj[array[index2]].index].style.transform = `translateX(${60 * moved2}px)`
+      }
+      let length = array.length
+      for (var i = 0; i < length; i++) {
+        for (var j = 0; j < length -1; j++) {
           if (arr[j] > arr[j+1]) {
-            swap(arr, j, j+1)
+            swap(array, j, j+1)
             console.log(arr)
           }
-          if (j < l - 1) {
-            j++
-            setTimeout(step2, 1000)
-          } else {
-            if (i < l) {
-              i++
-              j = 0
-              setTimeout(step, 1000)
-            }
-          }
         }
-        step2()
       }
-
-      step()
     }
-
-    setTimeout(() => {
-      console.log(arr)
-    }, 20000)
+    
   </script>
 </body>
 </html>
